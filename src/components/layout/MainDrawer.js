@@ -43,35 +43,14 @@ const MainDrawer = ({
     <Divider />
     <MenuItem
       component={Link}
-      onClick={dispatchCloseDrawer}
-      to="/get-match-data"
-    >
-      Get Match Data
-    </MenuItem>
-    <Divider />
-    <MenuItem
-      component={Link}
       exact="true"
       onClick={dispatchCloseDrawer}
       to="/"
     >
       Home
     </MenuItem>
-    <MenuItem component={Link} onClick={dispatchCloseDrawer} to="/create-bet">
-      Create a Bet
-    </MenuItem>
-    <MenuItem component={Link} onClick={dispatchCloseDrawer} to="/accept-bet">
-      Accept a Bet
-    </MenuItem>
-    <MenuItem component={Link} onClick={dispatchCloseDrawer} to="/settle-bet">
-      Settle a Bet
-    </MenuItem>
-    <MenuItem component={Link} onClick={dispatchCloseDrawer} to="/cancel-bet">
-      Cancel a Bet
-    </MenuItem>
-    <Divider />
-    <MenuItem component={Link} onClick={dispatchCloseDrawer} to="/my-account">
-      My Account
+    <MenuItem component={Link} onClick={dispatchCloseDrawer} to="/other">
+      Other
     </MenuItem>
   </Drawer>
 )
