@@ -13,3 +13,18 @@ export const ethToWei = eth => (eth ? new BN(eth).mul(decimals18) : new BN(0))
 
 export const weiToEth = wei =>
   wei ? new BN(wei).div(decimals18).toNumber() : new BN(0).toNumber()
+
+export const networkIdToName = id => {
+  switch (id) {
+    case 3:
+      return 'ropsten'
+    case 4:
+      return 'rinkeby'
+    case 42:
+      return 'kovan'
+    case 1:
+      return 'mainnet'
+    default:
+      return 'mainnet'
+  }
+}

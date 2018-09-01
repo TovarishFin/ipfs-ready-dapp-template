@@ -1,6 +1,7 @@
 import Web3 from 'web3'
 import ZeroClientProvider from 'web3-provider-engine/zero'
 import NoobCoin from 'noob-coin/build/contracts/NoobCoin'
+import { networkIdToName } from './data'
 
 export const getWeb3 = () =>
   new Promise((resolve, reject) => {
@@ -33,15 +34,33 @@ export const getWeb3 = () =>
     })
   })
 
+// needed in order to get events through websockets
+export const getWsWeb3 = async () => {
+  const networkId = await getNetwork()
+  const networkName = networkIdToName(networkId)
+  return new Web3(`wss://${networkName}.infura.io/ws`)
+}
+
 export const setupNoobCoin = async () => {
   const web3 = await getWeb3()
   const networkId = await getNetwork()
-  const betHandler = new web3.eth.Contract(
+  const noobCoin = new web3.eth.Contract(
     NoobCoin.abi,
     NoobCoin.networks[networkId].address
   )
 
-  return betHandler
+  return noobCoin
+}
+
+export const setupWsNoobCoin = async () => {
+  const web3 = await getWsWeb3()
+  const networkId = await getNetwork()
+  const noobCoin = new web3.eth.Contract(
+    NoobCoin.abi,
+    NoobCoin.networks[networkId].address
+  )
+
+  return noobCoin
 }
 
 export const getNetwork = async () => {
