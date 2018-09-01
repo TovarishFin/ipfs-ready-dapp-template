@@ -8,6 +8,7 @@ import { AppContainer } from 'react-hot-loader'
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import themeConfig from '../config/muiThemeConfig'
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 import App from './components/App'
 
@@ -20,6 +21,7 @@ const render = App => {
   ReactDOM.render(
     <AppContainer>
       <MuiThemeProvider theme={createMuiTheme(themeConfig)}>
+        <CssBaseline />
         <Provider store={store}>
           <App />
         </Provider>
