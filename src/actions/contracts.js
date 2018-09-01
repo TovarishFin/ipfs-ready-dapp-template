@@ -16,3 +16,8 @@ export const dispatchGotTokenBalance = (account, balance) => ({
   type: 'GOT_TOKEN_BALANCE',
   payload: { account, balance }
 })
+
+export const dispatchTransfer = (recipient, amount) => ({
+  type: 'TRANSFER_TOKENS',
+  payload: { recipient, amount }
+})

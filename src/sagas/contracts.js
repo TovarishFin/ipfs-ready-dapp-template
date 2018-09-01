@@ -28,14 +28,13 @@ export function* getTokenBalance(action) {
     const balance = yield call(noobCoin.methods.balanceOf(account).call, {
       from: coinbase
     })
-    console.log(account)
     yield put(dispatchGotTokenBalance(account, balance))
   } catch (err) {
     yield put(dispatchError(err.message, err.stack, 'contract'))
   }
 }
 
-export function* transfer(action) {
+export function* transferTokens(action) {
   const { recipient, amount } = action.payload
   try {
     const coinbase = yield select(coinbaseSelector)
@@ -52,6 +51,7 @@ export default function* contractSagas() {
   try {
     yield takeEvery('GET_TOTAL_SUPPLY', getTotalSupply)
     yield takeEvery('GET_TOKEN_BALANCE', getTokenBalance)
+    yield takeEvery('TRANSFER_TOKENS', transferTokens)
   } catch (err) {
     yield put(dispatchError(err.message, err.stack, 'contract root'))
   }

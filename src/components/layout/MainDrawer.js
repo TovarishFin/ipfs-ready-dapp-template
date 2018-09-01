@@ -49,8 +49,8 @@ const MainDrawer = ({
     >
       Home
     </MenuItem>
-    <MenuItem component={Link} onClick={dispatchCloseDrawer} to="/other">
-      Other
+    <MenuItem component={Link} onClick={dispatchCloseDrawer} to="/transfer">
+      Transfer
     </MenuItem>
   </Drawer>
 )

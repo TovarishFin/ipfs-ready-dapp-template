@@ -7,7 +7,10 @@ import {
   dispatchGetTokenBalance
 } from '../../actions/contracts'
 import { coinbaseSelector } from '../../selectors/network'
-import { balanceSelector, totalSupplySelector } from '../../selectors/contracts'
+import {
+  tokenBalanceSelector,
+  totalSupplySelector
+} from '../../selectors/contracts'
 
 class Home extends Component {
   componentDidMount() {
@@ -29,7 +32,7 @@ class Home extends Component {
 const mapStateToProps = state => ({
   coinbase: coinbaseSelector(state),
   totalSupply: totalSupplySelector(state),
-  coinbaseBalance: balanceSelector(state, coinbaseSelector(state))
+  coinbaseBalance: tokenBalanceSelector(state, coinbaseSelector(state))
 })
 
 const mapDispatchToProps = {

@@ -12,7 +12,7 @@ import Web3Loading from './layout/Web3Loading'
 
 // pages
 import Home from './pages/Home'
-import Temp from './pages/Temp'
+import Transfer from './pages/Transfer'
 
 // styles
 import { withStyles } from '@material-ui/core/styles'
@@ -53,7 +53,7 @@ const App = ({ classes, web3Ready }) => (
         <React.Fragment>
           <MainDrawer />
           <Route exact path="/" component={Home} />
-          <Route path="/other" component={Temp} />
+          <Route path="/transfer" component={Transfer} />
         </React.Fragment>
       ) : (
         <Web3Loading />
