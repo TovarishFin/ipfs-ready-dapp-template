@@ -1,6 +1,6 @@
 import Web3 from 'web3'
 import ZeroClientProvider from 'web3-provider-engine/zero'
-import ExampleToken from '../contracts/ExampleToken'
+import NoobCoin from 'noob-coin/build/contracts/NoobCoin'
 
 export const getWeb3 = () =>
   new Promise((resolve, reject) => {
@@ -33,12 +33,12 @@ export const getWeb3 = () =>
     })
   })
 
-export const setupExampleToken = async () => {
+export const setupNoobCoin = async () => {
   const web3 = await getWeb3()
   const networkId = await getNetwork()
   const betHandler = new web3.eth.Contract(
-    ExampleToken.abi,
-    ExampleToken.networks[networkId].address
+    NoobCoin.abi,
+    NoobCoin.networks[networkId].address
   )
 
   return betHandler
@@ -56,6 +56,6 @@ export const getBlockNumber = async () => {
 
 export const getCoinbase = async () => {
   const web3 = await getWeb3()
-  const accounts = web3.eth.getAccounts()
+  const accounts = await web3.eth.getAccounts()
   return accounts[0]
 }
