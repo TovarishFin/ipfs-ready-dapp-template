@@ -16,7 +16,6 @@ module.exports = {
     "plugin:jest/recommended",
     "plugin:promise/recommended",
     "plugin:react/recommended",
-    "plugin:react-ssr/all",
     "plugin:redux-saga/recommended",
     "plugin:security/recommended"
   ],
@@ -27,7 +26,6 @@ module.exports = {
     "prettier",
     "promise",
     "react",
-    "react-ssr",
     "redux-saga",
     "security"
   ],

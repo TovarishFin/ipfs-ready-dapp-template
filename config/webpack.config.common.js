@@ -1,16 +1,34 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const AutoDllPlugin = require('autodll-webpack-plugin')
+
 module.exports = {
-  entry: {
-    app: path.resolve(__dirname, '../src/index.js')
-  },
+  entry: [
+    'babel-polyfill',
+    path.resolve(__dirname, '../src/index.js'),
+    'react-hot-loader/patch'
+  ],
   plugins: [
     new CleanWebpackPlugin(['app']),
     new HtmlWebpackPlugin({
-      title: 'Minimum-Viable',
+      title: 'IPFS Ready Dapp',
       filename: 'index.html',
       template: './public/index.html'
+    }),
+    new AutoDllPlugin({
+      inject: true,
+      filename: '[name].js',
+      entry: {
+        vendor: [
+          'react',
+          'react-dom',
+          'react-redux',
+          'redux',
+          'babel-polyfill',
+          'redux-devtools-extension'
+        ]
+      }
     })
   ],
   module: {
@@ -20,7 +38,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', '@babel/preset-react']
+            presets: ['@babel/preset-env', '@babel/preset-react']
           }
         },
         exclude: /node_modules/
@@ -30,7 +48,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', '@babel/preset-react']
+            presets: ['@babel/preset-env', '@babel/preset-react']
           }
         },
         exclude: /node_modules/
@@ -43,6 +61,6 @@ module.exports = {
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'app')
+    path: path.resolve(__dirname, '../build')
   }
 }
