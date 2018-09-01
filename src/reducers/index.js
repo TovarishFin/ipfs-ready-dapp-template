@@ -1,3 +1,3 @@
-export { default as temp } from './temp'
+export { default as network } from './network'
 
-export { default as temp2 } from './temp2'
+export { default as errors } from './errors'

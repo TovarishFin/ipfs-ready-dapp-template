@@ -1,13 +1,13 @@
 const defaultState = {
-  temp2Setup: true
+  errors: []
 }
 
 const reducer = (state = defaultState, action = {}) => {
   switch (action.type) {
-    case 'EXAMPLE_ACTION':
+    case 'ERROR':
       return {
         ...state,
-        temp2Setup: action.payload
+        errors: [...state.errors, action.payload]
       }
     default:
       return state

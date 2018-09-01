@@ -1,9 +1,9 @@
-import * as tempActions from './temp'
-import * as temp2Actions from './temp2'
+import * as networkActions from './network'
+import * as errorsActions from './errors'
 
 const actions = {
-  tempActions,
-  temp2Actions
+  networkActions,
+  errorsActions
 }
 
 export default actions
